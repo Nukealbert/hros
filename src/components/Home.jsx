@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {  useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { Button, Container, Stack,Row,Col,Form, FormLabel, Card } from 'react-bootstrap';
+import { Button, Container, Stack,Row,Col,Form, FormLabel, Card, } from 'react-bootstrap';
 import {BsPower} from 'react-icons/bs';
-import '../styles/style.css'
+import '../styles/style.css';
+import {BsFillBrightnessLowFill} from 'react-icons/bs';
+import {AiOutlineFork} from 'react-icons/ai'
 
 const Home = () => {
     const dispatch=useDispatch()
@@ -108,12 +110,17 @@ const Home = () => {
                 </Row>
             </Container>
             <Container>
-            <Row  className='justify-content-md-center p-5 repo' style={{cursor:'pointer' }}>
+            <Row  className='justify-content-md-center p-5 repo' style={{cursor:'pointer',color:'white' }}>
                 {
                     filteredRepos.map((repo) =>(
                         
-                        <Card key={repo.id}  className='col-sm-12  mb-2'style={{height:'100px', backgroundColor:'#1B1212'}}>
-                            <Card.Title style={{color:'white'}} onClick={() => handleRepoClick(repo)}><Button variant='text'>{repo.name}</Button></Card.Title>
+                        <Card key={repo.id}  className='col-sm-12 bg-dark  mb-2'style={{height:'100%', backgroundColor:'#1B1212',color:'white'}}>
+                            <Card.Title className='repohead'  onClick={() => handleRepoClick(repo)}>{repo.full_name}</Card.Title>
+                            <Card.Text>{repo.description}</Card.Text>
+                            <Card.Text ><AiOutlineFork/>{repo.forks_count} <BsFillBrightnessLowFill />{repo.language}</Card.Text>
+                           
+                           
+                           
                         </Card>
                     ))
                 }

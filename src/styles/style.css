@@ -2,3 +2,6 @@
 .repo::-webkit-scrollbar {
     display: none;
 }
+.repohead:hover{
+    text-decoration: underline;
+}
